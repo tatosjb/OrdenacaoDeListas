@@ -49,6 +49,7 @@ bool InsereInicioDE(ListaDE<T> &L, T NovoDado){
     return true;
 }
 
+
 template<typename T>
 bool RemoveFinalDE(ListaDE<T> &L){
 
