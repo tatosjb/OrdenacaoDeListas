@@ -8,5 +8,9 @@ using namespace std;
 
 int main()
 {
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> Add Readme
 }
