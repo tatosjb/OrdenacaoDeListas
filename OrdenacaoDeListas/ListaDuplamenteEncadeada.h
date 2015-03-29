@@ -172,12 +172,11 @@ bool RemovePosicaoDE(ListaDE<T> &L, int Posicao){
 }
 
 template<typename T>
-void bubblesort (ListaDE<T> &L){
+void bubblesortDE (ListaDE<T> &L){
 
-    ElementoDE<T> * aux1;
-    ElementoDE<T> * aux2;
-    aux1=L.inicio;
-    aux2=L.inicio;
+    ElementoDE<T> * aux1=L.inicio;
+    ElementoDE<T> * aux2=L.inicio;
+
     for(int i=0; i<L.qtd-1; i++){
         for(int j=0; j<L.qtd; j++){
             if(aux1->dado > aux1->proximo->dado){
@@ -186,5 +185,6 @@ void bubblesort (ListaDE<T> &L){
             aux1=aux1.proximo;
         }
         aux2=aux2.proximo;
+		aux1=aux2.proximo;
     }
 }

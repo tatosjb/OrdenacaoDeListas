@@ -1,5 +1,6 @@
 
 struct Musica{
+	int Sequencia;
     string Nome;
     string Autor;
 };
@@ -111,11 +112,46 @@ bool RemoveFinalLE(ListaEnc &LE){
     return true;
 }
 
-void ImprimeListaEnc (ListaEnc &LE){
-
-    Elemento * aux = LE.inicio;
-    while(aux!=NULL){
-        cout<<aux->dado.Nome<<"\n";
-        aux = aux->proximo;
+bool RemovePosicaoLE(ListaEnc &LE, int Posicao){
+    if(Posicao>=LE.qtd || LE.qtd==0 || Posicao<0){
+        return false;
     }
+    if(LE.qtd==1){
+        return RemoveInicioLE(LE);
+    }
+    if(Posicao=LE.qtd-1){
+        return RemoveFinalLE(LE);
+    }
+
+	Elemento * aux = LE.inicio;
+	Elemento * aux2= LE.inicio;;
+
+	for(int i=0; i<Posicao-1; i++){
+		aux=aux->proximo; // Auxiliar fica no elemento anterior ao que será deletado.
+		aux2=aux2->proximo;
+	}
+
+	aux=aux->proximo;
+	aux2->proximo=aux->proximo;
+	delete aux;
+	LE.qtd--;
+
+	return true;
+}
+
+void BubblesortLE(ListaEnc &LE){
+
+	Elemento * aux1 = LE.inicio;
+	Elemento * aux2 = LE.inicio;
+
+	for(int i=0; i<LE.qtd-1; i++){
+		for(int j=0; j<LE.qtd; j++){
+			if(aux1->dado.Sequencia > aux1->proximo->dado.Sequencia){
+				swap(aux1->dado , aux1->proximo->dado);
+			}
+			aux1=aux1->proximo;
+		}
+		aux2=aux2->proximo;
+		aux1=aux2->proximo;
+	}
 }
